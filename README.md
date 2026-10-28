@@ -1,63 +1,69 @@
-# Paradise Nursery Shopping Application
+# e-plantShopping: Paradise Nursery Shopping Application
 
-A modern, responsive e-commerce web application for **Paradise Nursery**, an online plant store where green meets serenity. Built using **React**, **Redux Toolkit**, and **Vite**, this application offers an engaging shopping experience enabling users to explore diverse plant collections, manage their shopping carts, and calculate costs seamlessly in real-time.
+**Project Name:** e-plantShopping  
+**Application Title:** Paradise Nursery Shopping Application  
 
 ---
 
 ## Project Overview
 
-**Paradise Nursery** is dedicated to bringing nature closer to homes and workplaces. The application consists of:
-1. **Landing Page**: An inviting entrance featuring high-resolution greenhouse imagery, company branding, a mission statement via the About Us section, and a "Get Started" call-to-action button.
-2. **Product Listing Page**: An organized showcase featuring houseplants categorized into multiple sections (Air Purifying, Aromatic Fragrant, Insect Repellent, Medicinal, and Low Maintenance). Each plant displays its thumbnail image, name, description, and price with an interactive "Add to Cart" button.
-3. **Responsive Navigation Bar**: Persistent navigation across both the product catalog and shopping cart views, displaying quick links to Home, Plants, and a dynamic Cart icon displaying the live total count of items.
-4. **Shopping Cart Page**: A full-featured shopping cart view displaying added plants with thumbnails, unit prices, subtotal cost per plant, and overall cart total. Users can increment, decrement, or remove items, proceed to checkout, or continue browsing plants.
+**e-plantShopping** is a modern, responsive e-commerce web application developed for **Paradise Nursery**, an online plant nursery where green meets serenity. Built using **React**, **Redux Toolkit**, and **Vite**, the **e-plantShopping** application provides a comprehensive shopping experience allowing users to browse diverse plant collections, view product details, manage their shopping carts dynamically, and compute prices in real-time.
+
+The **e-plantShopping** project emphasizes interactive frontend features including:
+- An engaging landing page with company branding and background imagery.
+- An About Us section detailing Paradise Nursery's mission and team of experts.
+- A categorized plant catalog containing 5 distinct categories with 6 unique plants per category.
+- Dynamic cart state management with real-time addition, removal, and quantity adjustment.
+- A consistent navigation bar with navigation links to Home, Plants, and Cart with live count display.
 
 ---
 
 ## Key Features
 
-- **Company Introduction (`AboutUs.jsx`)**: Comprehensive overview of Paradise Nursery's passion for quality plants and customer service.
-- **Hero Landing (`App.jsx` & `App.css`)**: Beautiful background styling with translucent overlay, branding, and intuitive smooth transition into the plant shop.
-- **Global State Management (`CartSlice.jsx`)**: Built with Redux Toolkit to cleanly manage cart operations:
-  - `addItem`: Adds selected houseplants to the cart or increments existing quantity.
-  - `removeItem`: Deletes an item from the cart.
-  - `updateQuantity`: Updates the quantity when users increment or decrement items.
+- **Project Name Details**: Titled **e-plantShopping** (Paradise Nursery Shopping Application).
+- **Company Introduction (`AboutUs.jsx`)**: Comprehensive overview of Paradise Nursery's passion for quality plants and commitment to a greener lifestyle.
+- **Hero Landing Page (`App.jsx` & `App.css`)**: Beautiful greenhouse background styling with translucent overlay, company name branding, and a "Get Started" call-to-action button that transitions smoothly into the store.
+- **Global State Management (`CartSlice.jsx`)**: Redux Toolkit slice managing cart state with three core reducer functions:
+  - `addItem`: Adds selected houseplants to the cart or increments their quantity if already present.
+  - `removeItem`: Removes a plant item from the shopping cart.
+  - `updateQuantity`: Adjusts the quantity of items directly when incremented or decremented.
 - **Houseplant Catalog (`ProductList.jsx`)**:
-  - Displays at least 6 unique houseplants per category across 5 distinct categories.
-  - Dynamic "Add to Cart" button that disables and displays "Added to Cart" once an item is in the cart.
-  - Real-time cart badge counter that automatically reflects the total item count.
-  - Integrated navigation bar with links to Home, Plants, and Cart.
-- **Cart Management (`CartItem.jsx`)**:
-  - Displays unit price, item thumbnail, quantity controls, and total cost per plant.
-  - Dynamically calculates grand total cost for all items in the cart.
-  - Quantity controls (`+` and `-`) with auto-removal if quantity reaches zero.
+  - Displays at least 6 unique houseplants per category across 5 distinct categories (Air Purifying, Aromatic Fragrant, Insect Repellent, Medicinal, Low Maintenance).
+  - "Add to Cart" button that dispatches items to the Redux store, disables once added, and displays "Added to Cart".
+  - Persistent navbar on both Product Listing and Cart pages with navigation links for Home (`handleParadiseNurseyClick`), Plants, and Cart.
+  - Dynamic cart counter showing total number of items, updating automatically when items are added or removed.
+- **Shopping Cart Page (`CartItem.jsx`)**:
+  - Displays plant thumbnail, name, unit price, quantity controls (`+` and `-`), and total cost per plant.
+  - Calculates and displays the total cart amount for all plants.
   - Quick-remove "Delete" button per item.
-  - "Continue Shopping" button to return to the catalog and a "Checkout" button informing users that order placement is coming soon.
+  - "Continue Shopping" button to return to the plant listing.
+  - "Checkout" button that alerts a "Coming Soon" notification message.
 
 ---
 
 ## Project Structure
 
 ```text
+e-plantShopping/
 ├── public/
 │   └── vite.svg
 ├── src/
 │   ├── assets/
 │   ├── AboutUs.css          # Styling for the About Us section
-│   ├── AboutUs.jsx          # Company mission and background component
-│   ├── App.css              # Landing page layout and background styling
-│   ├── App.jsx              # Main application root and view controller
+│   ├── AboutUs.jsx          # Company mission and details component
+│   ├── App.css              # Landing page styling and background image
+│   ├── App.jsx              # Landing page with company name & Get Started button
 │   ├── CartItem.css         # Styling for shopping cart interface
-│   ├── CartItem.jsx         # Cart display, item totals, and quantity controls
-│   ├── CartSlice.jsx        # Redux Toolkit slice with addItem, removeItem, and updateQuantity
+│   ├── CartItem.jsx         # Shopping cart page component with totals & actions
+│   ├── CartSlice.jsx        # Redux Toolkit slice (addItem, removeItem, updateQuantity)
 │   ├── index.css            # Global resets and fonts
 │   ├── main.jsx             # React entry point with Redux Provider
 │   ├── ProductList.css      # Styling for navbar, product grid, and cards
-│   ├── ProductList.jsx      # Plant catalog and persistent navigation bar
+│   ├── ProductList.jsx      # Plant listing page, categories, and persistent navbar
 │   └── store.js             # Redux store configuration
 ├── index.html
 ├── package.json
-├── README.md                # Project documentation and details
+├── README.md                # Project documentation and details (e-plantShopping)
 └── vite.config.js
 ```
 
@@ -65,10 +71,10 @@ A modern, responsive e-commerce web application for **Paradise Nursery**, an onl
 
 ## Technologies Used
 
-- **React 18**: Component-based UI architecture.
-- **Redux Toolkit & React-Redux**: Centralized global application state.
-- **Vite**: Ultra-fast build and development tool.
-- **CSS3**: Responsive flexbox and grid styling with responsive media queries.
+- **React 18**: Component-driven user interface.
+- **Redux Toolkit & React-Redux**: Global state management for cart operations.
+- **Vite**: Rapid frontend build tooling and development environment.
+- **CSS3**: Modern responsive layouts with flexbox, grid, and CSS media queries.
 
 ---
 

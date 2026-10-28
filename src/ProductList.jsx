@@ -11,7 +11,7 @@ function ProductList({ onHomeClick }) {
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart.items);
 
-    // Keep addedToCart synchronized with cart items
+    // Keep addedToCart synchronized with cart items (re-enables buttons if items are removed)
     useEffect(() => {
         const cartMap = {};
         cart.forEach((item) => {
@@ -20,7 +20,11 @@ function ProductList({ onHomeClick }) {
         setAddedToCart(cartMap);
     }, [cart]);
 
-    const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+    // Calculate total quantity dynamically - updates automatically when items are added, updated, or removed from the cart
+    const calculateTotalQuantity = () => {
+        return cart ? cart.reduce((total, item) => total + item.quantity, 0) : 0;
+    };
+    const totalQuantity = calculateTotalQuantity();
 
     const plantsArray = [
         {
@@ -254,18 +258,27 @@ function ProductList({ onHomeClick }) {
         cursor: 'pointer',
     };
 
-    const handleHomeClick = (e) => {
-        e.preventDefault();
-        onHomeClick();
+    // Navigation handler for Paradise Nursery Home link
+    const handleParadiseNurseyClick = (e) => {
+        if (e && e.preventDefault) {
+            e.preventDefault();
+        }
+        if (onHomeClick) {
+            onHomeClick();
+        }
     };
 
     const handleCartClick = (e) => {
-        e.preventDefault();
+        if (e && e.preventDefault) {
+            e.preventDefault();
+        }
         setShowCart(true);
     };
 
     const handlePlantsClick = (e) => {
-        e.preventDefault();
+        if (e && e.preventDefault) {
+            e.preventDefault();
+        }
         setShowCart(false);
     };
 
@@ -290,7 +303,7 @@ function ProductList({ onHomeClick }) {
                 <div className="tag">
                     <div className="luxury">
                         <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="Paradise Nursery Logo" />
-                        <a href="/" onClick={(e) => handleHomeClick(e)}>
+                        <a href="/" onClick={(e) => handleParadiseNurseyClick(e)}>
                             <div>
                                 <h3 style={{ color: 'white' }}>Paradise Nursery</h3>
                                 <i style={{ color: 'white' }}>Where Green Meets Serenity</i>
@@ -300,7 +313,7 @@ function ProductList({ onHomeClick }) {
                 </div>
                 <div style={styleObjUl}>
                     <div>
-                        <a href="#" onClick={(e) => handleHomeClick(e)} style={styleA}>Home</a>
+                        <a href="#" onClick={(e) => handleParadiseNurseyClick(e)} style={styleA}>Home</a>
                     </div>
                     <div>
                         <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a>
